@@ -5,11 +5,11 @@ import 'normalize.css/normalize.css';
 import 'react-dates/lib/css/_datepicker.css';
 import './styles/style.scss';
 
-import Globaltrain from './components/Globaltrain'
+import AppRouter from './routers/AppRouter';
 
 
 const App = () => (    
-  <Globaltrain />  
+  <AppRouter />  
 )
 
 const root = createRoot(document.getElementById('app')); 

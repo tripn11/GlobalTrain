@@ -1,7 +1,7 @@
 import React from "react";
 
-export default () => (
-    <div>
+export default (props) => (
+    <div ref={ props.contactRef } id='contact'>
         <div>
             <h3>GLOBALTRAIN LOGISTICS</h3>
             <h2>Affordable Logistics Solutions</h2>

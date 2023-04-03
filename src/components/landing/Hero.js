@@ -1,7 +1,8 @@
 import React from "react";
-import ship from '../Images/ship.jpg';
-import truck from '../Images/truck.jpg';
-import plane from '../Images/plane.jpg';
+import { Link } from "react-router-dom";
+import ship from '../../Images/ship.jpg';
+import truck from '../../Images/truck.jpg';
+import plane from '../../Images/plane.jpg';
 
 
 export default () => (
@@ -14,7 +15,7 @@ export default () => (
         <div>
             <p>GLOBALTRAIN LOGISTICS</p>
             <p>We are reliable and professional</p>
-            <button>TRACK PACKAGE</button>
+            <Link to='/tracker'>TRACK PACKAGE</Link>
         </div>
     </div>
 )

@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../Images/GlobalTrain-logo.png';
+import logo from '../../Images/GlobalTrain-logo.png';
 
 export default () => (
     <div>

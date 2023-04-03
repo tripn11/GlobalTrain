@@ -1,13 +1,13 @@
 import React from "react";
-import package1 from '../Images/packages1.jpg';
-import package2 from '../Images/packages2.jpg';
-import package3 from '../Images/packages3.jpg';
-import package4 from '../Images/packages4.jpg';
-import package5 from '../Images/packages5.jpg';
-import package6 from '../Images/packages6.jpg';
+import package1 from '../../Images/packages1.jpg';
+import package2 from '../../Images/packages2.jpg';
+import package3 from '../../Images/packages3.jpg';
+import package4 from '../../Images/packages4.jpg';
+import package5 from '../../Images/packages5.jpg';
+import package6 from '../../Images/packages6.jpg';
 
-export default () => (
-    <div>
+export default (props) => (
+    <div ref={ props.servicesRef } id='services'>
         <h2>LOGISTICS SOLUTIONS</h2>
 
         <p>We offer comprehensive logistics and transportation solutions worldwide, covering sea, land, and air 
