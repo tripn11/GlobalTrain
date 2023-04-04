@@ -7,7 +7,7 @@ import package5 from '../../Images/packages5.jpg';
 import package6 from '../../Images/packages6.jpg';
 
 export default (props) => (
-    <div ref={ props.servicesRef } id='services'>
+    <div ref={ props.servicesRef } id='services' className='component'>
         <h2>LOGISTICS SOLUTIONS</h2>
 
         <p>We offer comprehensive logistics and transportation solutions worldwide, covering sea, land, and air 

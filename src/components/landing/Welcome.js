@@ -2,7 +2,7 @@ import React from "react";
 import ship from '../../Images/ship.jpg';
 
 export default (props) => (
-    <div ref={ props.welcomeRef } id='welcome'>
+    <div ref={ props.welcomeRef } id='welcome' className="component">
         <div>
             <p>WELCOME TO</p>
             <h1>GLOBALTRAIN LOGISTICS</h1>

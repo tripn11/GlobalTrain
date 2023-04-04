@@ -1,4 +1,4 @@
-import React, { useRef }from "react";
+import React, { useRef, useEffect,useState }from "react";
 import Navigation from "./Navigation";
 import Hero from './Hero';
 import Welcome from './Welcome';
@@ -7,6 +7,16 @@ import Contact from './Contact';
 import Footer from './Footer';
 
 export default () =>{
+    useEffect(() => {
+        window.addEventListener('scroll', getActiveComponent);
+        return () => {
+          window.removeEventListener('scroll', getActiveComponent);
+        };
+    }, [])
+
+   
+
+    const [id, setId] = useState('');
     const homeRef = useRef(null);
     const welcomeRef = useRef(null);
     const servicesRef = useRef(null);
@@ -37,6 +47,20 @@ export default () =>{
         }
     };
 
+    const getActiveComponent = () => {
+        const components = document.querySelectorAll('.component');
+        const qualified = [];
+        components.forEach ( (component)=> {
+            if(window.scrollY < component.offsetTop + component.offsetHeight) {
+                qualified.push(component.getAttribute('id'));
+            }
+        })
+        const activeId = (qualified[0]);
+        setId(activeId);
+    }
+
+
+
     return (
         <div>
             <p>whatsapp icon</p>
@@ -46,6 +70,7 @@ export default () =>{
                 scrollToServices={scrollToServices}
                 scrollToContact={scrollToContact} 
                 homeRef={homeRef}
+                activeComponent={id}
             />
             <Hero />
             <Welcome welcomeRef={welcomeRef}/>

@@ -6,7 +6,7 @@ import plane from '../../Images/plane.jpg';
 
 
 export default () => (
-    <div>
+    <div className="component" id="hero">
         <div>
             <img src={ship} alt='aeroplane' />
             <img src={truck} alt='aeroplane' />

@@ -1,7 +1,7 @@
 import React from "react";
 
 export default (props) => (
-    <div ref={ props.contactRef } id='contact'>
+    <div ref={ props.contactRef } id='contact' className="component">
         <div>
             <h3>GLOBALTRAIN LOGISTICS</h3>
             <h2>Affordable Logistics Solutions</h2>
