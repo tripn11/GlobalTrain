@@ -1,23 +1,31 @@
 import React from "react";
 import { connect } from "react-redux";
-import { searchGoods } from '../../Reducers/recordsReducer'
-import Navigation from '../landing/Navigation';
+import { Link } from "react-router-dom";
+import { searchedId } from '../../Reducers/filtersReducer';
+import History from './History';
 
 const Tracking = (props) => {
 
     const saveSearch = (e) => {
-        props.dispatchSaveCode(e.target.value);
+        props.dispatchSearchedId(e.target.value);
     }
 
     return (
         <div>
-            <Navigation />
-            <input 
+            <div>
+                <Link to='/' >Home</Link>
+                <Link to='/admin'>Icon for Admin</Link>
+            </div>
+            <div>
+                <input 
                 placeholder="Enter Consignment Number"
-                value={props.state.records.tracker}
+                value={props.state.filters.searchedId}
                 onChange={saveSearch}    
-            />
-
+                />
+                <button>Search</button>
+            </div>
+            
+        
             <div>
                 <div>
                     <p>Date</p>
@@ -28,12 +36,9 @@ const Tracking = (props) => {
                 </div>
 
                 <div>
-                    <p>2022-08-01</p>
-                    <p>05:32 am</p>
-                    <p>UK</p>
-                    <p>On hold</p>
-                    <p>Payment has not been made</p>
+                    <History />
                 </div>
+                
             </div>
         </div>
     )
@@ -44,7 +49,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchSaveCode:(code)=>dispatch(searchGoods(code))
+    dispatchSearchedId:(code)=>dispatch(searchedId(code))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracking);
