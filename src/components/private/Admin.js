@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import moment from 'moment'
+import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
 import { adminSearchedId, status, date } from "../../Reducers/filtersReducer";
 import Item from "./Item";
@@ -101,7 +101,7 @@ const Admin = (props) => {
                         showClearDates={true}
                         numberOfMonths={1}
                         isOutsideRange={() => false}
-                        displayFormat='DD/MM/YYYY'
+                        displayFormat='DD-MM-YYYY'
                         startDatePlaceholderText='Start Date'
                         endDatePlaceholderText='End Date'    
                     />
