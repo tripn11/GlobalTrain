@@ -1,19 +1,32 @@
-// import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-// const initialState = {
-//     tracker:''
-// }
+const initialState = []
 
-// const recordsSlice = createSlice({
-//     name: 'records',
-//     initialState,
-//     reducers: {
-//         searchGoods (state, action) {
-//             return {...state, tracker:action.payload}
-//         }
-//     }
-// })
+const recordsSlice = createSlice({
+    name: 'records',
+    initialState,
+    reducers: {
+        addItem (state, action) {
+            state.push(action.payload)
+        },
 
-// export const { searchGoods } = recordsSlice.actions;
+        removeItem (state, action) {
+            const index = state.findIndex((record) => record.id === action.payload);
+            if (index !== -1) {
+                state.splice(index, 1);
+            }
+        },
 
-// export default recordsSlice.reducer;
+        editItem (state, action) {
+            state.map((item,index)=>{
+                if(item.id === action.payload.id){
+                  state.splice(index, 1, action.payload)
+                }
+              })
+        }
+    }
+})
+
+export const { addItem, removeItem, editItem } = recordsSlice.actions;
+
+export default recordsSlice.reducer;

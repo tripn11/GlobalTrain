@@ -1,24 +1,30 @@
 import React, { useState } from 'react';
 import { SingleDatePicker } from 'react-dates';
 import moment from 'moment';
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import generator from '../../Accessories/IdGenerator';
+import { addItem, editItem } from '../../Reducers/recordsReducer';
 
 
-
-const Form = () => {
+const Form = (props) => {
+    const navigate = useNavigate();
     const [record, setRecord] = useState({
-        shipperDetails:{
+        id: props.item?props.item.id:'',
+        createdAt: props.item?props.item.createdAt:moment().valueOf(),
+        shipperDetails:props.item?props.item.shipperDetails:{
             name:'',
             phone:'',
             address:'',
             email:''
         },
-        receiverDetails:{
+        receiverDetails:props.item?props.item.receiverDetails:{
             name:'',
             phone:'',
             address:'',
             email:''
         },
-        shipmentDetails:{
+        shipmentDetails:props.item?props.item.shipmentDetails:{
             typeOfShipment:'',
             weight:'',
             packages:'',
@@ -264,10 +270,23 @@ const Form = () => {
         setFocusedState(focused);
     }
 
-console.log(record.shipmentDetails.pickupDate)
+    const submit = (e) => {
+        e.preventDefault();
+        if(!props.item) {
+            const name = record.receiverDetails.name;
+            const array = name.split(" ");
+            const nameId = array[0];
+            const id = generator(nameId)
+            props.dispatchAddItem({...record, id})
+        }else{
+            props.dispatchEditItem(record);
+        }
+        navigate("/admin");
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={submit}>
                 <div>
                     <h2>SHIPPER DETAILS</h2>
                     <div>
@@ -307,6 +326,7 @@ console.log(record.shipmentDetails.pickupDate)
                         <input
                             value={record.receiverDetails.name}
                             onChange={receiverNameChange}
+                            required
                         />
                     </div>
                     <div>
@@ -465,10 +485,19 @@ console.log(record.shipmentDetails.pickupDate)
                     </div>
                 </div>
 
-                <button>Add Item</button>
+                {props.item && 
+                    <div>its working</div>
+                }
+
+                <button>{props.item?'Save':'Add Item'}</button>
             </form>
         </div>
     )
 }
 
-export default Form;
+ const mapDispatchToProps = (dispatch) => ({
+    dispatchAddItem: (item) => dispatch(addItem(item)),
+    dispatchEditItem: (item) => dispatch(editItem(item))
+ })
+
+export default connect(undefined, mapDispatchToProps)(Form);

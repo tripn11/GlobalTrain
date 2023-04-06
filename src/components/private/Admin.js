@@ -118,7 +118,18 @@ const Admin = (props) => {
                     <div>Status</div>
                     <div>Actions</div>
                 </div>
-                <Item />
+                <div>
+                    {props.state.records.map((record) => (
+                        <Item 
+                            key={record.id}
+                            id={record.id}
+                            shipperName={record.shipperDetails.name}
+                            name={record.receiverDetails.name}
+                            date={moment(record.createdAt).format("DD-MM-YYYY")}
+                            status={record.status}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     )
