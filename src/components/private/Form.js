@@ -318,7 +318,6 @@ const Form = (props) => {
                 location:props.item?props.item.forClient[props.item.forClient.length-1].location:'',
                 remark:props.item?props.item.forClient[props.item.forClient.length-1].remark:''
             }) : '';
-            // const oldObject = props.item.forClient.length > 0 ? JSON.stringify(props.item.forClient[props.item.forClient.length-1]) : '';
             if(newObject === oldObject) {
                 props.dispatchEditItem(record);
             } else {
