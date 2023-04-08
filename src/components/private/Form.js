@@ -39,9 +39,20 @@ const Form = (props) => {
             carrierReferenceNumber:'',
             origin:'',
             pickupDate:''
-        }
+        },
+        forClient:props.item?props.item.forClient:[{
+            status:'pending',
+            location:'',
+            remark:'',
+            editedAt:moment().valueOf()
+        }]
     });
     const [focusedState, setFocusedState] = useState(false)
+    const [clientInfo, setClientInfo] = useState({
+        status:props.item?props.item.forClient[props.item.forClient.length-1].status:'Pending',
+        location:props.item?props.item.forClient[props.item.forClient.length-1].location:'',
+        remark:props.item?props.item.forClient[props.item.forClient.length-1].remark:''
+    })
 
     const shipperNameChange = (e) => {
         setRecord((previousState) => ({
@@ -270,6 +281,28 @@ const Form = (props) => {
         setFocusedState(focused);
     }
 
+    const locationChange = (e) => {
+        setClientInfo((previousState)=>({
+            ...previousState,
+            location:e.target.value
+        }))
+    }
+
+    const statusChange = (e) => {
+        setClientInfo((previousState)=>({
+            ...previousState,
+            status:e.target.value
+        }))
+    }
+
+    const remarkChange = (e) => {
+        setClientInfo((previousState)=>({
+            ...previousState,
+            remark:e.target.value
+        }))
+    }
+
+
     const submit = (e) => {
         e.preventDefault();
         if(!props.item) {
@@ -279,7 +312,18 @@ const Form = (props) => {
             const id = generator(nameId)
             props.dispatchAddItem({...record, id})
         }else{
-            props.dispatchEditItem(record);
+            const newObject = JSON.stringify(clientInfo);
+            const oldObject = props.item.forClient.length > 0 ? JSON.stringify({
+                status:props.item?props.item.forClient[props.item.forClient.length-1].status:'Pending',
+                location:props.item?props.item.forClient[props.item.forClient.length-1].location:'',
+                remark:props.item?props.item.forClient[props.item.forClient.length-1].remark:''
+            }) : '';
+            // const oldObject = props.item.forClient.length > 0 ? JSON.stringify(props.item.forClient[props.item.forClient.length-1]) : '';
+            if(newObject === oldObject) {
+                props.dispatchEditItem(record);
+            } else {
+                props.dispatchEditItem({...record,forClient:[...record.forClient,{...clientInfo,editedAt:moment().valueOf()}]});
+            }
         }
         navigate("/admin");
     }
@@ -486,7 +530,37 @@ const Form = (props) => {
                 </div>
 
                 {props.item && 
-                    <div>its working</div>
+                    <div>
+                        <h2>For Client</h2>
+                        <div>
+                            <label>Current Location</label>
+                            <input 
+                                value={clientInfo.location}
+                                onChange={locationChange}
+                            />
+                        </div>
+
+                        <div>
+                            <label>Status</label>
+                            <select
+                                value={clientInfo.status}
+                                onChange={statusChange}
+                            >
+                                <option value="pending">Pending</option>
+                                <option value='on hold'>On Hold</option>
+                                <option value='in transit'>In Transit</option>
+                                <option value='delivered'>Delivered</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label>Remark</label>
+                            <input 
+                                value={clientInfo.remark}
+                                onChange={remarkChange}
+                            />
+                        </div>
+                    </div>
                 }
 
                 <button>{props.item?'Save':'Add Item'}</button>

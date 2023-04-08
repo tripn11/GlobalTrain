@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from 'moment';
 import { DateRangePicker } from 'react-dates';
-import { adminSearchedId, status, date } from "../../Reducers/filtersReducer";
+import { adminSearchedId, status, date, sort } from "../../Reducers/filtersReducer";
 import Item from "./Item";
+import sorter from "../../Accessories/sorter";
 
 
 const Admin = (props) => {
@@ -58,6 +59,13 @@ const Admin = (props) => {
         setFocusedState(focused);
     }
 
+    const sortChanged =(choice)=>{
+        props.dispatchSort(choice)
+    }
+
+
+    const newRecords = sorter(props.state.records, props.state.filters)
+
     return (
         <div>
             <div>
@@ -86,7 +94,8 @@ const Admin = (props) => {
                     onChange={statusChanger}>
                     <option value='all status'>Select All Status</option>
                     <option value='pending'>Pending</option>
-                    <option value='out for delivery'>Out for Delivery</option>
+                    <option value='on hold'>On Hold</option>
+                    <option value='in transit'>In Transit</option>
                     <option value='delivered'>Delivered</option>
                 </select>
 
@@ -106,6 +115,11 @@ const Admin = (props) => {
                         endDatePlaceholderText='End Date'    
                     />
                 </div>
+
+                <div>
+                    <button onClick={()=>sortChanged('up')}>arrow up icon</button>
+                    <button onClick={()=>sortChanged('down')}>arrow down icon</button>
+                </div>
                 
             </div>
 
@@ -119,7 +133,7 @@ const Admin = (props) => {
                     <div>Actions</div>
                 </div>
                 <div>
-                    {props.state.records.map((record) => (
+                    {newRecords.length > 0 ?newRecords.map((record) => (
                         <Item 
                             key={record.id}
                             id={record.id}
@@ -128,7 +142,7 @@ const Admin = (props) => {
                             date={moment(record.createdAt).format("DD-MM-YYYY")}
                             status={record.status}
                         />
-                    ))}
+                    )):''}
                 </div>
             </div>
         </div>
@@ -142,7 +156,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     dispatchAdminSearchedId:(id)=>dispatch(adminSearchedId(id)),
     dispatchStatus:(currentStatus) => dispatch(status(currentStatus)),
-    dispatchDate:(currentDate) => dispatch(date(currentDate))
+    dispatchDate:(currentDate) => dispatch(date(currentDate)),
+    dispatchSort:(desire) => dispatch(sort(desire))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

@@ -6,6 +6,7 @@ const initialState = {
     searchedId:'',
     adminSearchedId:'',
     status:'all status',
+    sort:'',
     date: {
         startDate: null,
         endDate: null
@@ -30,10 +31,14 @@ const recordsSlice = createSlice({
 
         date (state, action) {
             return {...state, date:{...action.payload}}
+        },
+
+        sort (state, action) {
+            return {...state,sort:action.payload}
         }
     }
 })
 
-export const { searchedId, adminSearchedId, status, date } = recordsSlice.actions;
+export const { searchedId, adminSearchedId, status, date, sort } = recordsSlice.actions;
 
 export default recordsSlice.reducer;

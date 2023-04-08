@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+
+<script>
+    const fakeRecords = [{
+        id: '',
+        createdAt: 1000,
+        shipperDetails:{
+            name:'',
+            phone:'',
+            address:'',
+            email:''
+        },
+        receiverDetails:{
+            name:'',
+            phone:'',
+            address:'',
+            email:''
+        },
+        shipmentDetails:{
+            typeOfShipment:'',
+            weight:'',
+            packages:'',
+            product:'',
+            paymentMethod:'',
+            carrier:'',
+            departureTime:'',
+            destination:'',
+            courier:'',
+            quantity:'',
+            totalFreight:'',
+            carrierReferenceNumber:'',
+            origin:'',
+            pickupDate:''
+        },
+        forClient:[{
+            status:'on hold',
+            location:'',
+            remark:''
+        }]
+    },
+        {
+        id: '',
+        createdAt: 1000,
+        shipperDetails:{
+            name:'',
+            phone:'',
+            address:'',
+            email:''
+        },
+        receiverDetails:{
+            name:'',
+            phone:'',
+            address:'',
+            email:''
+        },
+        shipmentDetails:{
+            typeOfShipment:'',
+            weight:'',
+            packages:'',
+            product:'',
+            paymentMethod:'',
+            carrier:'',
+            departureTime:'',
+            destination:'',
+            courier:'',
+            quantity:'',
+            totalFreight:'',
+            carrierReferenceNumber:'',
+            origin:'',
+            pickupDate:''
+        },
+        forClient:[{
+            status:'pending',
+            location:'',
+            remark:''
+        }]
+    }]
+
+    const fakeFilters = {
+        searchedId:'',
+        adminSearchedId:'',
+        status:'pending',
+        sort:'',
+        date: {
+            startDate: null,
+            endDate: null
+        }
+    }
+
+
+const sortByStatus =(records, filters)=> {
+    switch (filters.status) {
+        case 'all status' :
+            return records
+        case 'pending' :
+            return records.filter( (item) => item.forClient.status === 'pending')
+        case 'on hold' : 
+            return records.filter( (item) => item.forClient.status === 'on hold')
+        case 'in transit' :
+            return records.filter( (item) => item.forClient.status === 'in transit')
+        case 'delivered' : 
+            return records.filter( (item) => item.forClient.status === 'delivered')
+        default:
+            break
+    }
+}
+
+const range = (records, filters) => {
+    if(filters.date.startDate !== null && filters.date.endDate !== null) {
+        return records.filter( (item) => item.createdAt >= filters.date.startDate && item.createdAt <= filters.date.endDate)
+    } else {
+        return records;
+    }
+}
+
+const searcher = (records, filters)=> {
+    if (filters.adminSearchedId !== "") {
+        return records.filter((item)=> item.id.search(filters.adminSearchedId) > -1)
+    }else {
+        return records
+    } 
+}
+
+const arrange = (records, filters) => {
+    if(filters.sort ==='down' || filters.down === '') {
+        return records.sort( (a, b) => a.createdAt - b.createdAt )
+    }else if (filters.sort === 'up') {
+        return records.sort((a,b) => b.createdAt - a.createdAt )
+    }    
+}
+
+const sorter = (records, filters) => {
+    if(records.length > 0) {
+        const sorted = sortByStatus(records,filters)
+        console.log(sorted.length)
+
+        if(sorted.length > 0) {
+            const ranged = range(sorted, filters)
+            if(ranged.length > 0) {
+                const searched = searcher(ranged, filters)
+
+                if(searched.length > 1) {
+                    return arrange(searched, filters)
+                }else if(searched.length ===1){
+                    return searched
+                }else {
+                    return []
+                }
+            }else {
+                return []
+            }
+        }else {
+            return []
+        }
+    }else {
+        return []
+    }
+}
+
+const finalRecords = sorter(fakeRecords, fakeFilters);
+
+
+    document.getElementById('app').innerHTML= finalRecords.length;
+</script>
+</body>
+</html>

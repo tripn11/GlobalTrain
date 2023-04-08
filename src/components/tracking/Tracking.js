@@ -3,12 +3,15 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchedId } from '../../Reducers/filtersReducer';
 import History from './History';
+import searcher from "../../Accessories/searcher";
 
 const Tracking = (props) => {
 
     const saveSearch = (e) => {
         props.dispatchSearchedId(e.target.value);
     }
+
+    const yourPackage = searcher(props.state.records, props.state.filters)
 
     return (
         <div>
@@ -18,11 +21,10 @@ const Tracking = (props) => {
             </div>
             <div>
                 <input 
-                placeholder="Enter Consignment Number"
-                value={props.state.filters.searchedId}
-                onChange={saveSearch}    
+                    placeholder="Enter Consignment Number"
+                    value={props.state.filters.searchedId}
+                    onChange={saveSearch}    
                 />
-                <button>Search</button>
             </div>
             
         
@@ -35,9 +37,7 @@ const Tracking = (props) => {
                     <p>Remarks</p>
                 </div>
 
-                <div>
-                    <History />
-                </div>
+                {yourPackage.forClient.length > 0 ? yourPackage.forClient.map( (item) => <History key={item.editedAt} details={item} />) : <p>No record</p> }
                 
             </div>
         </div>
