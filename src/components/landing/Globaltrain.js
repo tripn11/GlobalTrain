@@ -12,9 +12,7 @@ export default () =>{
         return () => {
           window.removeEventListener('scroll', getActiveComponent);
         };
-    }, [])
-
-   
+    }, [])   
 
     const [id, setId] = useState('');
     const homeRef = useRef(null);

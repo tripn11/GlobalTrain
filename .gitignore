@@ -3,3 +3,4 @@ dist
 .env
 .vscode
 ReadMe.md
+src/Firebase/firebase.js

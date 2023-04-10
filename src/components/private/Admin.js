@@ -84,7 +84,6 @@ const Admin = (props) => {
                         value={props.state.filters.adminSearchedId}
                         onChange={addAdminSearchedId}
                     />
-                    <button>Search Shipment</button>
                 </div>
             </div>
 

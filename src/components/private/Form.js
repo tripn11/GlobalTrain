@@ -3,8 +3,11 @@ import { SingleDatePicker } from 'react-dates';
 import moment from 'moment';
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { set, ref } from "firebase/database";
 import generator from '../../Accessories/IdGenerator';
 import { addItem, editItem } from '../../Reducers/recordsReducer';
+import { database } from '../../Firebase/firebase';
+import { setLoading } from '../../Reducers/authReducer';
 
 
 const Form = (props) => {
@@ -305,12 +308,17 @@ const Form = (props) => {
 
     const submit = (e) => {
         e.preventDefault();
+        props.dispatchSetLoading(true);
         if(!props.item) {
             const name = record.receiverDetails.name;
             const array = name.split(" ");
             const nameId = array[0];
             const id = generator(nameId)
-            props.dispatchAddItem({...record, id})
+            set(ref(database, 'records/'+id),{...record,id})
+                .then(() =>{
+                    props.dispatchAddItem({...record, id})
+                    props.dispatchSetLoading(false)
+                })
         }else{
             const newObject = JSON.stringify(clientInfo);
             const oldObject = props.item.forClient.length > 0 ? JSON.stringify({
@@ -319,9 +327,15 @@ const Form = (props) => {
                 remark:props.item?props.item.forClient[props.item.forClient.length-1].remark:''
             }) : '';
             if(newObject === oldObject) {
-                props.dispatchEditItem(record);
+                set(ref(database, 'records/'+ props.item.id),record)
+                    .then(()=>{
+                        props.dispatchEditItem(record);
+                    })
             } else {
-                props.dispatchEditItem({...record,forClient:[...record.forClient,{...clientInfo,editedAt:moment().valueOf()}]});
+                set(ref(database, 'records/' + props.item.id), {...record,forClient:[...record.forClient,{...clientInfo,editedAt:moment().valueOf()}]})
+                    .then(()=>{
+                        props.dispatchEditItem({...record,forClient:[...record.forClient,{...clientInfo,editedAt:moment().valueOf()}]});
+                    })
             }
         }
         navigate("/admin");
@@ -570,7 +584,8 @@ const Form = (props) => {
 
  const mapDispatchToProps = (dispatch) => ({
     dispatchAddItem: (item) => dispatch(addItem(item)),
-    dispatchEditItem: (item) => dispatch(editItem(item))
+    dispatchEditItem: (item) => dispatch(editItem(item)),
+    dispatchSetLoading: (action) => dispatch(setLoading(action))
  })
 
 export default connect(undefined, mapDispatchToProps)(Form);

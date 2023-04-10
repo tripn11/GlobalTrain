@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
+import { remove, ref } from "firebase/database";
+import { database } from "../../Firebase/firebase";
 import { removeItem } from '../../Reducers/recordsReducer';
 
 const Item = (props) => {
     const [display, setDisplay] = useState(false);
 
-    const remove = (id)=>{
-        props.dispatchDeleteItem(id);
+    const remover = (id)=>{
+        remove(ref(database, 'records/' + id))
+            .then(()=>{
+                props.dispatchDeleteItem(id);
+            })
     }
 
     return (
@@ -28,7 +33,7 @@ const Item = (props) => {
             >
                 <p>Are you sure you want to delete this item?</p>
                 <button onClick={()=>setDisplay(false)}>Cancel</button>
-                <button onClick={()=>remove(props.id)}>Yes, Delete</button>
+                <button onClick={()=>remover(props.id)}>Yes, Delete</button>
             </Modal>
         </div>
     )

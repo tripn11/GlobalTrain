@@ -23,10 +23,16 @@ const recordsSlice = createSlice({
                   state.splice(index, 1, action.payload)
                 }
               })
+        },
+
+        setRecords (state, action) {
+            action.payload.map((record) => {
+                state.push(record)
+            })
         }
     }
 })
 
-export const { addItem, removeItem, editItem } = recordsSlice.actions;
+export const { addItem, removeItem, editItem, setRecords } = recordsSlice.actions;
 
 export default recordsSlice.reducer;

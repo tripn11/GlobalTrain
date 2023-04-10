@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Modal from 'react-modal';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../Firebase/firebase";
 import { useNavigate } from "react-router-dom";
+import { get, ref } from "firebase/database";
+import { setRecords } from "../../Reducers/recordsReducer";
+import { database } from '../../Firebase/firebase';
 import { searchedId } from '../../Reducers/filtersReducer';
 import History from './History';
 import searcher from "../../Accessories/searcher";
@@ -14,6 +17,19 @@ const Tracking = (props) => {
 
     const[display, setDisplay] = useState(false)
     const[userDetails, setUserDetails] = useState({email:'',password:''})
+
+    useEffect(() => {
+        const records = [];
+        get(ref(database,'records'))
+            .then((snapshot) => {
+                if(snapshot.exists()) {
+                    snapshot.forEach((child) =>{
+                        records.push(child.val())
+                    })
+                props.dispatchSetRecords(records);  
+                }
+            })
+    }, [])
 
     const saveSearch = (e) => {
         props.dispatchSearchedId(e.target.value);
@@ -66,6 +82,7 @@ const Tracking = (props) => {
                 <input 
                     value={userDetails.password}
                     onChange={passwordUpdater}
+                    type="password"
                 />
 
                 <button onClick={()=>setDisplay(false)}>Cancel</button>
@@ -102,7 +119,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    dispatchSearchedId:(code)=>dispatch(searchedId(code))
+    dispatchSearchedId:(code)=>dispatch(searchedId(code)),
+    dispatchSetRecords: (records) => dispatch(setRecords(records))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Tracking);

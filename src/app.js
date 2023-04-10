@@ -8,13 +8,16 @@ import 'react-dates/lib/css/_datepicker.css';
 import './styles/style.scss';
 
 import AppRouter from './routers/AppRouter';
+import LoadingPage from './components/landing/Loading'
 
 
-const App = () => ( 
+const App = () => { 
+  return store.getState().auth.loading ? <LoadingPage /> : (
   <Provider store={store}>
     <AppRouter />  
-  </Provider>   
-)
+  </Provider>
+  )    
+}
 
 const root = createRoot(document.getElementById('app')); 
 root.render(<App />)
