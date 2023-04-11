@@ -1,11 +1,6 @@
-body {
-    color: red;
-}
-
-a.active {
-    color: black;
-}
-
-// #home {
-//     display: none;
-// }
+@import './base/variables';
+@import './base/base';
+@import './components/navigation';
+@import './components/hero';
+@import './components/welcome';
+@import './components/services';

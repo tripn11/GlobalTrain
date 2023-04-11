@@ -14,6 +14,7 @@ export default () =>{
         };
     }, [])   
 
+
     const [id, setId] = useState('');
     const homeRef = useRef(null);
     const welcomeRef = useRef(null);
@@ -45,23 +46,32 @@ export default () =>{
         }
     };
 
+    const navAdjuster = () => {
+        const nav = document.getElementById("home");
+        if(window.scrollY > window.innerHeight/2) {
+            nav.classList.add('scrolled')
+        }else {
+            nav.classList.remove('scrolled')
+        }
+
+    }
+
     const getActiveComponent = () => {
         const components = document.querySelectorAll('.component');
         const qualified = [];
+        navAdjuster();
         components.forEach ( (component)=> {
             if(window.scrollY < component.offsetTop + component.offsetHeight) {
                 qualified.push(component.getAttribute('id'));
             }
         })
         const activeId = (qualified[0]);
-        setId(activeId);
+        setId(window.scrollY >= components[components.length-1].offsetTop * 0.95 ? 'contact' : activeId);
     }
-
 
 
     return (
         <div>
-            <p>whatsapp icon</p>
             <Navigation
                 scrollToHome={scrollToHome} 
                 scrollToWelcome={scrollToWelcome}

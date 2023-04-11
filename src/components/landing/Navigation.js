@@ -14,17 +14,24 @@ export default (props) => {
         }
     }
 
+
     updateActiveLink();
+    // navAdjuster();
+
+    
 
     return (
     <div ref={ props.homeRef } id='home' className='component'>
-        <img src={logo} alt='company logo'/>
-        <a href="/#hero" onClick={props.scrollToHome} data-target="home">Home</a>
-        <a href="/#welcome" onClick={props.scrollToWelcome} data-target="welcome"> About us</a>
-        <a href='/#services' onClick={props.scrollToServices} data-target="services"> Our Services</a>
-        <a href="/#contact" onClick={props.scrollToContact} data-target="contact"> Contact us</a>
-            
-        <Link to='/tracker'>Track Package</Link>
+        <div className="centered">
+            <img src={logo} alt='company logo'/>
+            <span id='nav'>
+                <a href="/#hero" onClick={props.scrollToHome} data-target="home">Home</a>
+                <a href="/#welcome" onClick={props.scrollToWelcome} data-target="welcome"> About us</a>
+                <a href='/#services' onClick={props.scrollToServices} data-target="services"> Our Services</a>
+                <a href="/#contact" onClick={props.scrollToContact} data-target="contact"> Contact us</a>
+            </span>  
+            <Link to='/tracker' id="home-link">Track Package</Link>
+        </div>
     </div>
     )
     

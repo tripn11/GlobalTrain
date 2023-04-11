@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    line-height: 1.5rem;
+}
+
+body,html {
+    padding: 0;
+    margin:0;
+    overflow-x: hidden;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.component {
+    margin-bottom: 5rem;
+}
+
+.centered {
+    width: 70%;
+    margin: 0 auto;
+}

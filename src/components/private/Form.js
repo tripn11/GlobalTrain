@@ -404,7 +404,10 @@ const Form = (props) => {
                         <label>Email</label>
                         <input 
                             value={record.receiverDetails.email}
-                            onChange={receiverEmailChange}/>
+                            onChange={receiverEmailChange}
+                            type='email'
+                            required
+                        />
                     </div>
                 </div>
 

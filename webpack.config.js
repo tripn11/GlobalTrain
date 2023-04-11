@@ -57,7 +57,7 @@ module.exports = (env,argv) => {
         title:"GlobalTrain",
         filename:"index.html",
         template:"src/template.html",
-        favicon:"src/Images/favicon.jpg" //don't add the ./
+        favicon:"src/Images/favicon.png" //don't add the ./
       }),
       new MiniCssExtractPlugin()
     ],
