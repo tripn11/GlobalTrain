@@ -4,7 +4,6 @@ import truck from '../../Images/truck.jpg';
 export default (props) => {
     useEffect(()=>{
         const points = document.querySelectorAll('.point')
-        console.log(points)
         points.forEach((point)=>{
             point.addEventListener('click', ()=>{
                 points.forEach((each)=>{
@@ -13,7 +12,7 @@ export default (props) => {
                 point.classList.add('opened')
             })
         })
-    })
+    }, [])
 
     return (
     <div ref={ props.welcomeRef } id='welcome' className="component centered">
@@ -24,7 +23,7 @@ export default (props) => {
                 transportation, as well as handling bulk and project shipments. Our team consists of highly skilled and 
                 experienced staff members who are dedicated to ensuring seamless shipping operations and port management.
             </p>
-            <img src={truck} alt='ship for logistics'/>
+            <img src={truck} alt='truck for logistics'/>
         </div>
         <div id="point-container">
             <div className='point opened'>
