@@ -29,6 +29,7 @@ export default (props) => {
 
     return (
         <div ref={ props.servicesRef } id='services' className='component centered'>
+            <h2>Our Services</h2>
 
             <p>We offer comprehensive logistics and transportation solutions worldwide, covering sea, land, and air 
                 transport modes. With a strong commitment to risk management and liability protection, we would like to 

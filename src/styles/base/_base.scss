@@ -24,6 +24,22 @@ h1{
     font-size: 3rem;
 }
 
+button {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    background-color: $orange;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    box-shadow: 0.1rem 0.1rem 0.4rem darken($orange, 10);
+}
+
 .component {
     margin-bottom: 5rem;
 }

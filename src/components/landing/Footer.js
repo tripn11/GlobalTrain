@@ -1,9 +1,7 @@
 import React from "react";
-import logo from '../../Images/GlobalTrain-logo.png';
 
 export default () => (
-    <div>
-        <p>copywrite icon</p>
-        <img src={logo} alt='company logo' />
+    <div id="footer">
+        <p>&copy; GlobalTrain 2023</p>
     </div>
 )

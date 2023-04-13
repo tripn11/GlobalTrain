@@ -1,0 +1,186 @@
+#contact {
+    width: 100vw;
+    position: relative;
+
+    >div:first-child{
+       width: 100vw;
+       height: 40vh; 
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-attachment: fixed;
+       background-position: bottom;
+       color:white;
+       text-align: center;
+
+       h3{
+        color:$light-blue;
+        font-weight: 300;
+        font-size: 0.8rem;
+        padding: 2rem;
+        letter-spacing: 0.2rem;
+        word-spacing: 0.5rem;
+       }
+
+       h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        font-family: "Times New Roman", Times, serif;
+       }
+    }
+
+    > div:nth-child(2) {
+        background-color: transparent;
+        width: 80%;
+        height: 30vh;
+        text-align: center;
+        margin: 1rem auto;
+        box-shadow: 0.2rem 0.2rem 1rem $gray;
+        transform: translateY(-5rem);
+        -webkit-transform: translateY(-5rem);
+        -moz-transform: translateY(-5rem);
+        -ms-transform: translateY(-5rem);
+        -o-transform: translateY(-5rem);
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        padding-top: 1rem;
+
+
+        >p{
+            background-color: $dark-blue;
+            color: white;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15rem;
+            word-spacing: 0.3rem;
+        }
+
+        > div {
+            display: flex;
+            width: 100%;
+            height: 60%;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+    }
+
+    > div:nth-child(2).anime {
+        background-color: white;
+        
+        .contact-container{            
+            p:first-of-type{
+                transform: translateY(0);
+                -webkit-transform: translateY(0);
+                -moz-transform: translateY(0);
+                -ms-transform: translateY(0);
+                -o-transform: translateY(0);
+                opacity: 1;
+            }
+
+            p:last-of-type {
+                transform: translateX(0);
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0);
+                -ms-transform: translateX(0);
+                -o-transform: translateX(0);
+                opacity: 1;
+            }
+
+            *:first-child {
+                transform: translateX(0);
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0);
+                -ms-transform: translateX(0);
+                -o-transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+
+        *{
+            margin-bottom: 1rem;
+        }
+        
+        h2{
+            text-align: center;
+        }
+
+        input {
+            padding: 0.8rem;
+            border: 1px solid black;
+            outline: none;
+        }
+
+        textarea {
+            padding: 0.8rem;
+            border: 1px solid black;
+            outline: none;
+        }
+    }
+
+}
+
+.contact-container {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: auto auto;
+
+
+    p:first-of-type{
+        grid-area:1/1/2/3;
+        color: $gray;
+        transform: translateY(-3rem);
+        -webkit-transform: translateY(-3rem);
+        -moz-transform: translateY(-3rem);
+        -ms-transform: translateY(-3rem);
+        -o-transform: translateY(-3rem);
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        opacity: 0;
+    }
+
+    p:last-of-type{
+        transform: translateX(3rem);
+        -webkit-transform: translateX(3rem);
+        -moz-transform: translateX(3rem);
+        -ms-transform: translateX(3rem);
+        -o-transform: translateX(3rem);
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        opacity:0;
+    }
+
+    *:first-child{
+        font-size: 1.5rem;
+        padding-right: 0.5rem;
+        color: $dark-blue;
+        transform: translateX(-3rem);
+        -webkit-transform: translateX(-3rem);
+        -moz-transform: translateX(-3rem);
+        -ms-transform: translateX(-3rem);
+        -o-transform: translateX(-3rem);
+        transition: 1s;
+        -webkit-transition: 1s;
+        -moz-transition: 1s;
+        -ms-transition: 1s;
+        -o-transition: 1s;
+        opacity: 0;
+    }
+}
+

@@ -30,8 +30,16 @@
 }
 
 #home.scrolled #home-link {
-    font-size: 0.8rem;
-    padding:0.8rem
+    // font-size: 0.8rem;
+    // padding:0.8rem;
+    display:none;
+}
+
+#home.scrolled #nav {
+    margin-left: 7rem;
+    a{
+        margin-right: 3rem;
+    }
 }
 
 #home a {
