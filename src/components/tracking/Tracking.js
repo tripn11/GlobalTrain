@@ -61,44 +61,54 @@ const Tracking = (props) => {
             })
     }
 
+
     return (
-        <div>
+        <div id='tracking'>
             <div>
-                <Link to='/' >Home</Link>
-                <button onClick={() => setDisplay(true)}>Icon for Admin</button>
+                <Link to='/' title="Home"><ion-icon name="home"></ion-icon></Link>
+                <p>GlobalTrain Logistics</p>
+                <ion-icon name="person" onClick={() => setDisplay(true)} title="Admin"></ion-icon>
             </div>
 
             <Modal 
                 isOpen={display}
                 ariaHideApp={false}
+                className='signIn-Modal'
+                overlayClassName='overlay-signIn'
             >
-                <label>Email</label>
-                <input 
-                    value={userDetails.email}
-                    onChange={emailUpdater}
-                />
-
-                <label>Password</label>
-                <input 
-                    value={userDetails.password}
-                    onChange={passwordUpdater}
-                    type="password"
-                />
-
-                <button onClick={()=>setDisplay(false)}>Cancel</button>
-                <button onClick={authenticate}>Sign In</button>
+                <div>
+                    <label>Email</label>
+                    <input 
+                        type="email"
+                        value={userDetails.email}
+                        onChange={emailUpdater}
+                    />
+                </div>
+                
+                <div>
+                    <label>Password</label>
+                    <input 
+                        value={userDetails.password}
+                        onChange={passwordUpdater}
+                        type="password"
+                    />
+                </div>
+               
+                <div>
+                    <button onClick={()=>setDisplay(false)}>Cancel</button>
+                    <button onClick={authenticate}>Sign In</button>
+                </div>
+                
             </Modal>
 
-            <div>
-                <input 
-                    placeholder="Enter Consignment Number"
-                    value={props.state.filters.searchedId}
-                    onChange={saveSearch}    
-                />
-            </div>
+            <input 
+                placeholder="Enter Consignment Number"
+                value={props.state.filters.searchedId}
+                onChange={saveSearch}    
+            />
             
-        
             <div>
+                <h2>Shipment History</h2>
                 <div>
                     <p>Date</p>
                     <p>Time</p>
@@ -106,8 +116,9 @@ const Tracking = (props) => {
                     <p>Status</p>
                     <p>Remarks</p>
                 </div>
-
-                {yourPackage.forClient.length > 0 ? yourPackage.forClient.map( (item) => <History key={item.editedAt} details={item} />) : <p>No record</p> }
+                {yourPackage.forClient.length > 0 ? 
+                    yourPackage.forClient.map( (item) => <History key={item.editedAt} details={item} />) : 
+                    <p>{props.state.filters.searchedId ===''? '':'No records'}</p>}
                 
             </div>
         </div>

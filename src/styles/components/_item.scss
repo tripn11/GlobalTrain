@@ -1,0 +1,12 @@
+.item {
+    display: grid;
+    width: 80vw;
+    grid-template-columns: 17% 17% 17% 17% 32%;
+    margin: 0 auto;
+    border: 3px solid whitesmoke;
+    border-top: transparent;
+    
+    p{
+        padding: 0.5rem;
+    }
+}
