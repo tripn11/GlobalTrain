@@ -1,0 +1,53 @@
+#adminItem {
+    width: 100%;
+    border: 3px solid white;
+    border-top: none;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 20% 16% 16% 16% 16% 16%;
+    padding: 0.8rem;
+    height: 3rem;  
+    
+    > div:first-child {
+        color: $dark-blue;
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    > div:last-of-type {
+        >*:first-child {
+            margin-right: 2rem;
+        }
+    }
+}
+
+.delete-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: black;
+    background: white;
+    padding: 2rem 2rem;
+    width: 20vw;
+    height: 30vh;
+    border-radius: 1rem;
+    box-shadow: 0.1rem 0.1rem 0.5rem $orange;
+    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+    outline: none;
+
+    p{
+        padding-bottom: 4rem;
+    }
+
+    button:first-of-type {
+        margin-right: 2rem;
+    }
+}

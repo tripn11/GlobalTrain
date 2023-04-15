@@ -1,0 +1,207 @@
+#admin {
+    background-color: whitesmoke;
+    min-height: 100vh;
+    > div:first-child{
+        background-color: $orange;
+        position: relative;
+        height: 5vh;
+
+        > * {
+            position: absolute;
+            color: white;
+        }
+
+        > *:hover {
+            color: black;
+        }
+
+        > *:first-child {
+            left: 3rem;
+            font-size: 1.8rem;
+            top: 0.2rem;
+        }
+
+        > *:last-child {
+            right: 5rem;
+            top: 0.1rem;
+            text-decoration: none;
+            border: 1px solid black;
+            padding: 0.2rem 0.5rem;
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+            -ms-border-radius: 100px;
+            -o-border-radius: 100px;
+            background-color: transparent;
+        }
+    }
+
+    > div:nth-child(2) {
+        margin-top: 4rem;
+        >div:first-child {
+            display: flex;
+            justify-content: space-between;
+            width: 97vw;
+            margin: 1rem auto;
+
+            > *:last-child {
+                text-decoration: none;
+                padding: 0.1rem 0.4rem;
+                border: 1px solid $dark-blue;
+                color: white;
+                background-color: $dark-blue;
+                border-radius: 0.2rem;
+                -webkit-border-radius: 0.2rem;
+                -moz-border-radius: 0.2rem;
+                -ms-border-radius: 0.2rem;
+                -o-border-radius: 0.2rem;
+            }
+
+            > *:last-child:hover {
+                color: $dark-blue;
+                background-color: whitesmoke;
+            }
+        }
+
+        >div:nth-child(2) {
+            text-align: right;
+            margin-right: 2rem;
+            
+            input{
+                padding: 0.2rem 0.4rem;
+                border-radius: 0.3rem;
+                -webkit-border-radius: 0.3rem;
+                -moz-border-radius: 0.3rem;
+                -ms-border-radius: 0.3rem;
+                -o-border-radius: 0.3rem;
+                width: 20vw;
+            }
+        }
+    }
+
+    > div:nth-child(3) {
+        width: 50vw;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin-left: 1.5rem;
+
+        > *:first-child {
+            height: 2rem;
+            width: fit-content;
+            border-color: grey;
+            outline-color: $dark-blue;
+            border-radius: 0.5rem;
+            -webkit-border-radius: 0.5rem;
+            -moz-border-radius: 0.5rem;
+            -ms-border-radius: 0.5rem;
+            -o-border-radius: 0.5rem;
+        }
+
+        > *:nth-child(2) {
+            display: flex;
+
+            > *:last-child{
+                flex-grow: 1;
+            }
+
+        }
+
+        > *:last-child {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+            font-size: 1.4rem;
+
+            > * {
+                background-color: white;
+                padding: 0.3rem;
+                margin-right: 0.5rem;
+                border-radius: 0.5rem;
+                -webkit-border-radius: 0.5rem;
+                -moz-border-radius: 0.5rem;
+                -ms-border-radius: 0.5rem;
+                -o-border-radius: 0.5rem;
+            }
+        }
+    }
+
+    > div:last-child {
+        width: 97vw;
+        margin: 1rem auto;
+        padding: 0.5rem;
+
+        >div:first-child {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 20% 16% 16% 16% 16% 16%;
+            background-color: white;
+            padding: 0.8rem;
+        }
+
+        >div:last-child {
+            background-color: whitesmoke;
+        }
+    }
+}
+
+.DateRangePickerInput{ //theoutsidecontainerbackground-color: white;
+    height: 2rem;
+    border-color: $dark-blue;
+    background-color: white;
+    border-radius:0.3rem ;
+    -webkit-border-radius:0.3rem ;
+    -moz-border-radius:0.3rem ;
+    -ms-border-radius:0.3rem ;
+    -o-border-radius:0.3rem ;
+    margin-left: 0.5rem;
+    width: 19rem;
+
+    > .DateInput{ //inner container of inputs
+        background-color: white;
+        height: 100%;
+        padding: 0;
+        margin-left: 0.1rem;
+        width:7rem;
+
+        .DateInput__display-text{ //the text itself
+            color: black; 
+            margin-right: 0;
+            padding-right: 0;   
+        }
+
+        .DateInput__display-text--focused {
+            background-color: rgba($orange, 0.4);
+        }
+    }
+
+    > .DateRangePickerInput__arrow {
+        vertical-align: top;
+        background-color: white;
+        height: 100%;
+
+        svg{
+            background-color: white;
+        }
+    }
+
+    >.DateRangePickerInput__clear-dates {
+        vertical-align: top;
+        padding: 0.2rem;
+    }
+}
+
+.CalendarDay--selected-span {
+    background: $gray;
+    border: 1px double grey;
+    color: white;
+}
+
+.CalendarDay--selected-start, .CalendarDay--selected-end, .CalendarDay--selected {
+    background: $gray;
+    border: 1px double grey;
+    color: #fff;
+}
+  
+.CalendarDay--hovered-span {
+    background-color: rgba($orange, 0.4);
+}

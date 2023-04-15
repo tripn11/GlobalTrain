@@ -67,9 +67,9 @@ const Admin = (props) => {
     const newRecords = sorter(props.state.records, props.state.filters)
 
     return (
-        <div>
+        <div id='admin'>
             <div>
-                <Link to='/'>Home</Link>
+                <Link to='/'><ion-icon name="home"></ion-icon></Link>
                 <Link to='/tracker'>Track Package</Link>
             </div>
 
@@ -116,10 +116,9 @@ const Admin = (props) => {
                 </div>
 
                 <div>
-                    <button onClick={()=>sortChanged('up')}>arrow up icon</button>
-                    <button onClick={()=>sortChanged('down')}>arrow down icon</button>
-                </div>
-                
+                    <ion-icon name="arrow-up-outline" onClick={()=>sortChanged('up')}></ion-icon>
+                    <ion-icon name="arrow-down-outline" onClick={()=>sortChanged('down')}></ion-icon>
+                </div>    
             </div>
 
             <div>
@@ -139,7 +138,7 @@ const Admin = (props) => {
                             shipperName={record.shipperDetails.name}
                             name={record.receiverDetails.name}
                             date={moment(record.createdAt).format("DD-MM-YYYY")}
-                            status={record.status}
+                            status={record.forClient[record.forClient.length-1].status}
                         />
                     )):''}
                 </div>

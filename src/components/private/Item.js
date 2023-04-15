@@ -17,19 +17,21 @@ const Item = (props) => {
     }
 
     return (
-        <div>
+        <div id='adminItem'>
             <div>{props.id}</div>
             <div>{props.shipperName}</div>
             <div>{props.name}</div>
             <div>{props.date}</div>
-            {/* <div>{props.status}</div> */}
+            <div>{props.status}</div>
             <div>
-                <Link to={`/admin/editShipment/${props.id}`}><button>Edit</button></Link>
-                <button onClick={()=>setDisplay(true)}>Delete</button>
+                <Link to={`/admin/editShipment/${props.id}`}><button className='alt'>Edit</button></Link>
+                <button onClick={()=>setDisplay(true)} className='alt'>Delete</button>
             </div>
             <Modal
                 isOpen={display}
                 ariaHideApp={false}
+                className='delete-item'
+                overlayClassName='overlay-signIn'
             >
                 <p>Are you sure you want to delete this item?</p>
                 <button onClick={()=>setDisplay(false)}>Cancel</button>

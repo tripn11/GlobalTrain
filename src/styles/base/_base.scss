@@ -36,8 +36,17 @@ button {
     transition: all 0.3s ease;
 }
 
+button.alt {
+    background-color: $dark-blue;
+    padding: 0.3rem 0.6rem;
+}
+
 button:hover {
     box-shadow: 0.1rem 0.1rem 0.4rem darken($orange, 10);
+}
+
+button.alt:hover {
+    box-shadow: 0.1rem 0.1rem 0.4rem darken($dark-blue, 10);
 }
 
 .component {

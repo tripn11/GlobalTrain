@@ -3,7 +3,7 @@ import package3 from '../../Images/packages3.jpg'
 
 export default (props) => {
     useEffect(()=>{
-        document.addEventListener('scroll',()=>{
+        const action = () => {
             const contactContainer = document.querySelector('#contact > div:nth-child(2)')
 
             if(window.scrollY + window.innerHeight > 
@@ -12,7 +12,11 @@ export default (props) => {
             }else {
                 contactContainer.classList.remove('anime')
             }
-        })
+        }
+
+        document.addEventListener('scroll', action)
+
+        return () => {document.removeEventListener('scroll', action)}
     }, [])
 
     return (
