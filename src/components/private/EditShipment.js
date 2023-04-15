@@ -12,7 +12,7 @@ const EditShipment = (props) => {
     }
 
     return (
-        <div>
+        <div id='edit-shipment'>
             <h2>Edit Shipment</h2>
             <Form 
                 item={fillForm()}

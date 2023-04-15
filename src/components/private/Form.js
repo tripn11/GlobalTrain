@@ -342,7 +342,7 @@ const Form = (props) => {
     }
 
     return (
-        <div>
+        <div id='form'>
             <form onSubmit={submit}>
                 <div>
                     <h2>SHIPPER DETAILS</h2>
