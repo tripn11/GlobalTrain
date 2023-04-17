@@ -4,7 +4,7 @@ import moment from 'moment';
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { set, ref } from "firebase/database";
-import generator from '../../Accessories/IdGenerator';
+import generator from '../../Accessories/idGenerator';
 import { addItem, editItem } from '../../Reducers/recordsReducer';
 import { database } from '../../Firebase/firebase';
 import { setLoading } from '../../Reducers/authReducer';

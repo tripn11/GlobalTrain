@@ -7,7 +7,6 @@ import { auth } from "../../Firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { get, ref } from "firebase/database";
 import { setRecords } from "../../Reducers/recordsReducer";
-import { resetState } from "../../Reducers/recordsReducer";
 import { database } from '../../Firebase/firebase';
 import { searchedId } from '../../Reducers/filtersReducer';
 import History from './History';
