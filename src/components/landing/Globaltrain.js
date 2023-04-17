@@ -2,7 +2,7 @@ import React, { useRef, useEffect,useState }from "react";
 import Navigation from "./Navigation";
 import Hero from './Hero';
 import Welcome from './Welcome';
-import Services from './Services';
+import Services from './ServicesSection';
 import Contact from './Contact';
 import Footer from './Footer';
 
