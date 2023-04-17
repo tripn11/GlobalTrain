@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ship from '../../Images/ship.jpg';
+import ship from '../../Images/Ship.jpg';
 import plane from '../../Images/plane.jpg';
 
 
