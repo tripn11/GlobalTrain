@@ -8,9 +8,9 @@ import Footer from './Footer';
 
 export default () =>{
     useEffect(() => {
-        window.addEventListener('scroll', getActiveComponent);
+        document.addEventListener('scroll', getActiveComponent);
         return () => {
-          window.removeEventListener('scroll', getActiveComponent);
+          document.removeEventListener('scroll', getActiveComponent);
         };
     }, [])   
 

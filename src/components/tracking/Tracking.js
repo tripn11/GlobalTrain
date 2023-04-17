@@ -31,6 +31,8 @@ const Tracking = (props) => {
             })
     }, [])
 
+    
+
     const saveSearch = (e) => {
         props.dispatchSearchedId(e.target.value);
     }
@@ -51,13 +53,21 @@ const Tracking = (props) => {
         }))
     }
 
+    const myAlert = (close) => {
+        const alertBox = document.getElementById('my-alert');
+        alertBox.classList.add('alert')
+        if(close) {
+            alertBox.classList.remove('alert');
+        }
+    }
+
     const authenticate = () => {
         signInWithEmailAndPassword(auth, userDetails.email, userDetails.password)
             .then(()=>{
                 navigate("/admin")
             })
             .catch(()=>{
-                alert('sorry you are not authorized')
+                myAlert()
             })
     }
 
@@ -76,6 +86,11 @@ const Tracking = (props) => {
                 className='signIn-Modal'
                 overlayClassName='overlay-signIn'
             >
+                <div id="my-alert">
+                    <p>Sorry you are not authorized</p>
+                    <button onClick={()=>myAlert('a')}>Ok</button>
+                </div>
+
                 <div>
                     <label>Email</label>
                     <input 

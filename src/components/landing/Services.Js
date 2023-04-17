@@ -12,7 +12,7 @@ export default (props) => {
         const indicators = document.querySelectorAll('#services-stats > div > p:first-child');
         const container = document.getElementById('services-stats')
         let level;
-        document.addEventListener('scroll', () => {
+        const counter = () => {
             if(window.scrollY + window.innerHeight > container.offsetTop + container.parentElement.offsetTop 
                 && window.scrollY < container.offsetTop + container.parentElement.offsetTop) {
                     level = ((window.scrollY + window.innerHeight) - 
@@ -24,7 +24,12 @@ export default (props) => {
                     indicators[3].innerHTML= `${Math.ceil(100*level)}%`
 
             }
-        })
+        }
+        document.addEventListener('scroll', counter)
+
+        return ()=> {
+            document.removeEventListener('scroll', counter)
+        }
     },[])
 
     return (

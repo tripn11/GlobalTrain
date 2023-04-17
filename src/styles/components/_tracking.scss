@@ -114,6 +114,48 @@
     grid-template-rows: 40% 40% 20%;
     outline: none;
 
+    #my-alert {
+        transform: translateY(-70vh);
+        -webkit-transform: translateY(-70vh);
+        -moz-transform: translateY(-70vh);
+        -ms-transform: translateY(-70vh);
+        -o-transform: translateY(-70vh);
+        transition: 0.8s;
+        -webkit-transition: 0.8s;
+        -moz-transition: 0.8s;
+        -ms-transition: 0.8s;
+        -o-transition: 0.8s;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        background-color: black;
+        color: white;
+        padding: 1rem;
+        height: 7rem;
+        padding-top: 1.5rem;
+        grid-template-columns: 70% 30%;
+        padding-top: 2.7rem;
+        width: 25rem;
+        box-shadow: 0.1rem 0.1rem 0.5rem  black;
+
+        p{
+            width: fit-content;
+        }
+
+        button {
+            padding: 0.5rem 2rem;
+            height: fit-content;
+        }
+    }
+
+    #my-alert.alert {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+    }
+
     div {
         width: 80%;
         margin: 0 auto;
@@ -121,7 +163,7 @@
         grid-template-columns: 30% 70%;
         
        *{
-        margin-bottom: 1rem;
+            margin-bottom: 1rem;
        }
 
        input{
@@ -132,7 +174,7 @@
         -moz-border-radius: 0.5rem;
         -ms-border-radius: 0.5rem;
         -o-border-radius: 0.5rem;
-}
+        }
     }
 }
 
@@ -141,4 +183,57 @@
     inset: 0;
     background-color: rgba($orange,0.2);
 }
+
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #tracking {
+        > div:first-child {
+            *:first-child{
+                left: 1rem;
+            }
+
+            *:last-child {
+                right: 1rem;
+            }
+        }
+
+        >input {
+            width: 25rem;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        > div:last-child {
+            > div:first-of-type {
+                width: 95%;
+
+                p {
+                    padding: 0.3rem;
+                }
+            }
+        }
+    }
+
+    .signIn-Modal {
+        width: 25rem;
+        padding: 2rem; 
+        
+        >div {
+            width: 95%;
+        }
+
+        #my-alert {
+            width:18rem;
+            left: 15%;
+            padding-top: 1.7rem;
+        }
+    }
+}
+
+
 
