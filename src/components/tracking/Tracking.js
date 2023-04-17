@@ -7,6 +7,7 @@ import { auth } from "../../Firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { get, ref } from "firebase/database";
 import { setRecords } from "../../Reducers/recordsReducer";
+import { resetState } from "../../Reducers/recordsReducer";
 import { database } from '../../Firebase/firebase';
 import { searchedId } from '../../Reducers/filtersReducer';
 import History from './History';
@@ -20,7 +21,8 @@ const Tracking = (props) => {
 
     useEffect(() => {
         const records = [];
-        get(ref(database,'records'))
+        if(props.state.records.length === 0) {
+            get(ref(database,'records'))
             .then((snapshot) => {
                 if(snapshot.exists()) {
                     snapshot.forEach((child) =>{
@@ -29,6 +31,8 @@ const Tracking = (props) => {
                 props.dispatchSetRecords(records);  
                 }
             })
+        } 
+        
     }, [])
 
     

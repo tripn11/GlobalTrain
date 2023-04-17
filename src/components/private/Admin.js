@@ -88,18 +88,22 @@ const Admin = (props) => {
             </div>
 
             <div>
-                <select
-                    value={props.state.filters.status}
-                    onChange={statusChanger}>
-                    <option value='all status'>Select All Status</option>
-                    <option value='pending'>Pending</option>
-                    <option value='on hold'>On Hold</option>
-                    <option value='in transit'>In Transit</option>
-                    <option value='delivered'>Delivered</option>
-                </select>
+                <div>
+                    <label>Sort by status</label>
+                    <select
+                        value={props.state.filters.status}
+                        onChange={statusChanger}>
+                        <option value='all status'>Select All Status</option>
+                        <option value='pending'>Pending</option>
+                        <option value='on hold'>On Hold</option>
+                        <option value='in transit'>In Transit</option>
+                        <option value='delivered'>Delivered</option>
+                    </select>
+                </div>
+                
 
                 <div>
-                    <p>Time range</p>
+                    <label>Time range</label>
                     <DateRangePicker 
                         startDate={dateRange.startDate ? moment(dateRange.startDate): null}
                         endDate={dateRange.endDate ? moment(dateRange.endDate): null}
@@ -116,8 +120,11 @@ const Admin = (props) => {
                 </div>
 
                 <div>
-                    <ion-icon name="arrow-up-outline" onClick={()=>sortChanged('up')}></ion-icon>
-                    <ion-icon name="arrow-down-outline" onClick={()=>sortChanged('down')}></ion-icon>
+                    <label>Order</label>
+                    <div>
+                        <ion-icon name="arrow-up-outline" onClick={()=>sortChanged('up')}></ion-icon>
+                        <ion-icon name="arrow-down-outline" onClick={()=>sortChanged('down')}></ion-icon>
+                    </div>
                 </div>    
             </div>
 

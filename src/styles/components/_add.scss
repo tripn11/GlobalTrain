@@ -6,3 +6,17 @@
         font-size: 2rem;
     }
 }
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #add-shipment{
+        padding: 1rem;
+        > h2 {
+            font-size: 1.8rem;
+        }
+    } 
+    
+}

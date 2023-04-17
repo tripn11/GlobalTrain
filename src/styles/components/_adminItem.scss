@@ -27,7 +27,7 @@
     left: 50%;
     color: black;
     background: white;
-    padding: 2rem 2rem;
+    padding: 2rem;
     width: 20vw;
     height: 30vh;
     border-radius: 1rem;
@@ -49,5 +49,48 @@
 
     button:first-of-type {
         margin-right: 2rem;
+    }
+}
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #adminItem {
+        grid-template-columns: 20% 14% 14% 16% 16% 20%;
+        >div:last-of-type {
+            vertical-align: top;
+            font-size: 0.6rem;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            
+            >*{
+                height: 1.2rem;
+                width: 2.5rem;
+            }
+
+            >*:last-child {
+                transform: translateY(0.2rem);
+                -webkit-transform: translateY(0.2rem);
+                -moz-transform: translateY(0.2rem);
+                -ms-transform: translateY(0.2rem);
+                -o-transform: translateY(0.2rem);
+                padding: 0;
+            }
+        }
+    }
+
+    .delete-item {
+        width: 20rem;
+        height: 10rem;
+
+        p{
+            padding-bottom: 2rem;
+        }
+
+        button{
+            font-size: 0.8rem;
+        }
     }
 }

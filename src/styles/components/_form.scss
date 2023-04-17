@@ -68,3 +68,42 @@
         }
     }
 }
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #form {
+        padding: 1rem;
+        form {
+            display: block;
+            
+            >div {
+                >div{
+                    margin-right: 0.5rem;
+                }
+            }
+
+            >div:nth-child(3) {
+                display: block;
+            }
+
+            button {
+                padding: 0.5rem;
+            }
+        }
+
+        .CalendarMonth__caption {
+            width:20rem;
+        }
+
+        .SingleDatePickerInput__clear-date{
+            margin-left: 6rem;
+        }
+
+        .dateInput {
+            width:2rem
+        }
+    }
+}

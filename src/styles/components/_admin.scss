@@ -86,15 +86,21 @@
         margin-left: 1.5rem;
 
         > *:first-child {
-            height: 2rem;
-            width: fit-content;
-            border-color: grey;
-            outline-color: $dark-blue;
-            border-radius: 0.5rem;
-            -webkit-border-radius: 0.5rem;
-            -moz-border-radius: 0.5rem;
-            -ms-border-radius: 0.5rem;
-            -o-border-radius: 0.5rem;
+            label {
+                display: none;
+            }
+            select {
+                height: 2rem;
+                width: fit-content;
+                border-color: grey;
+                outline-color: $dark-blue;
+                border-radius: 0.5rem;
+                -webkit-border-radius: 0.5rem;
+                -moz-border-radius: 0.5rem;
+                -ms-border-radius: 0.5rem;
+                -o-border-radius: 0.5rem;
+            }
+            
         }
 
         > *:nth-child(2) {
@@ -107,20 +113,31 @@
         }
 
         > *:last-child {
-            display: flex;
-            justify-content: space-between;
-            width: 70%;
-            font-size: 1.4rem;
+            >*:first-child {
+                display: none;
+            }
 
-            > * {
-                background-color: white;
-                padding: 0.3rem;
-                margin-right: 0.5rem;
-                border-radius: 0.5rem;
-                -webkit-border-radius: 0.5rem;
-                -moz-border-radius: 0.5rem;
-                -ms-border-radius: 0.5rem;
-                -o-border-radius: 0.5rem;
+            >*:last-child {
+                display: flex;
+                justify-content: space-between;
+                width: 60%;
+                font-size: 1.4rem;
+
+                >*{
+                    background-color: white;
+                    padding: 0.3rem;
+                    margin-right: 0rem;
+                    border-radius: 0.5rem;
+                    -webkit-border-radius: 0.5rem;
+                    -moz-border-radius: 0.5rem;
+                    -ms-border-radius: 0.5rem;
+                    -o-border-radius: 0.5rem;
+                }
+
+                >*:hover {
+                    background-color: $dark-blue;
+                    color: white;
+                }
             }
         }
     }
@@ -204,4 +221,109 @@
   
 .CalendarDay--hovered-span {
     background-color: rgba($orange, 0.4);
+}
+
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #admin {
+        > div:first-child {
+            *:first-child{
+                left: 1rem;
+            }
+
+            *:last-child {
+                right: 1rem;
+                border: none;
+                padding-top: 0.4rem;
+            }
+        }
+
+        > div:nth-child(2) {
+            margin-top: 2rem;
+
+            > div:first-child {
+                >h2 {
+                    font-size: 2rem;
+                }
+            }
+
+            >div:last-child {
+                margin-right: 0.5rem;
+                input {
+                    width: 20rem;
+                    margin-bottom: 3rem;
+                }
+            }
+        }
+
+        > div:nth-child(3) {
+            width: 97vw;
+            margin-left: 0.5rem;
+            grid-template-columns: 100%;
+
+            >*{
+                margin-bottom: 1rem;
+                display: grid;
+                grid-template-columns: 30% 70%;
+                width: 100%;
+                >*:first-child{
+                    padding-right: 1rem;
+                }
+            }
+
+            >*:first-child {
+                label {
+                    display: inline;
+                }
+            }
+
+            >*:nth-child(2) {
+                display: grid;
+                grid-template-columns: 30% 70%;
+            }
+
+            >*:last-child {
+                grid-row: 1/2;
+                >*:first-child {
+                    display: inline;
+                }
+
+                >*:last-child {
+                    width: 5rem;
+                }
+            }            
+        }
+
+        >div:last-child {
+            padding: 0;
+            font-size: 0.7rem;
+        }
+    }
+
+    .DateRangePickerInput {
+        margin: 0;
+    }
+
+    .DateInput__display-text{ //the text itself
+        font-size: 1rem; 
+    }
+
+    .DateRangePickerInput > .DateRangePickerInput__arrow {
+        height: 0.5rem;
+        font-size: 0.5rem;
+    }
+
+    .DateRangePickerInput__arrow svg {
+        height : 1.5rem
+    }
+
+    .DateRangePickerInput > .DateRangePickerInput__clear-dates{
+        padding: 0;
+        margin: 0;
+        vertical-align: middle;
+    }
 }
