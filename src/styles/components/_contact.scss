@@ -184,3 +184,85 @@
     }
 }
 
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 900px){
+    #contact > div:nth-child(2) {
+        height: 20vh;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    #contact > div:first-child {
+        height: 30vh;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    #contact > div:nth-child(2) {
+        height: 15vh;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #contact {
+        >div:first-child{
+            height: 17rem;
+            h3{
+                padding: 1rem;
+                margin-right: 1rem;
+            }
+
+            h2{
+                line-height: 3rem;
+                margin-right: 1rem;
+            }
+        }
+
+        > div:nth-child(2) {
+            width:90%;
+            margin:1rem auto;
+            padding-top: 0.5rem;
+            margin-right: 2.3rem;
+            height: fit-content;
+            padding: 1rem;
+
+            > p {
+                font-size: 0.5rem;
+                padding: 0.3rem 0.6rem;
+            }
+
+            > div {
+                padding: 0;
+                font-size: 0.7rem;
+                column-gap: 0.1rem;
+                height: fit-content;
+                align-items: flex-start;
+
+                >*{
+                    margin-right: 2em;
+                    margin-top: 1rem;
+                    flex: 1 1 0;
+
+                    >*:first-child {
+                        font-size: 1rem;
+                    }
+                }
+
+                >*:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        form {
+            width: 90%;
+            padding-right: 2rem;
+        }
+    }
+}
+
+

@@ -50,3 +50,25 @@
 
     
 }
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 900px){
+    #services-image-container {
+        height: 70vh;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    #services-image-container {
+        height: 50vh;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    #services-image-container {
+        height: 70vw;
+    }
+}

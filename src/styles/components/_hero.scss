@@ -132,3 +132,27 @@
     background-color: transparent;
 }
   
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #hero {
+        height: 80vh;
+    }
+    
+    #image-container {
+        height: 80vh;
+    }
+
+    #hero-content {
+        top: 10rem;
+        left: 2rem;
+        
+
+        > p:first-child {
+            line-height: 4rem;
+        }
+    }
+}

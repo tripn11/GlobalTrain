@@ -68,3 +68,18 @@
         padding-bottom: 1rem;
     }
 }
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 500px){
+    #welcome {
+        grid-template-columns: auto;
+        width: 92%;
+
+        h1 {
+            line-height: 3rem;
+        }
+    }
+}

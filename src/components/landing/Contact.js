@@ -43,7 +43,7 @@ export default (props) => {
                 <div className="contact-container">
                     <ion-icon name="location"></ion-icon>
                     <p>OFFICE</p>
-                    <p>1 lololo, Nigeria</p>
+                    <p>1 lololo</p>
                 </div>
 
                 <div className="contact-container">

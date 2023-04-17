@@ -5,6 +5,10 @@
     scroll-behavior: smooth;
 }
 
+html {
+    font-size: 1vw;
+}
+
 body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -56,4 +60,40 @@ button.alt:hover {
 .centered {
     width: 70%;
     margin: 0 auto;
+}
+
+
+//--------------------------------------------------------
+// QUERIES
+//--------------------------------------------------------
+
+@media only screen and (max-width: 900px){
+    html {
+        font-size: 1.2vw;
+    }
+
+    .centered {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 900px){
+    html {
+        font-size: 1.4vw;
+    }
+
+    .centered {
+        width: 97%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    body,html { 
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    html {
+        font-size: 3vw;
+    }
 }
