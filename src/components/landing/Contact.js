@@ -29,21 +29,9 @@ export default (props) => {
             <p>SCHEDULE AN APPOINTMENT</p>
             <div>
                 <div className="contact-container">
-                    <ion-icon name="call"></ion-icon>
-                    <p>PHONE</p>
-                    <p>+234000000000</p>
-                </div>
-
-                <div className="contact-container">
                     <ion-icon name="mail"></ion-icon>
                     <p>EMAIL</p>
-                    <p>globaltrain@gmail.com</p>
-                </div>
-
-                <div className="contact-container">
-                    <ion-icon name="location"></ion-icon>
-                    <p>OFFICE</p>
-                    <p>1 lololo</p>
+                    <p>globaltrainlogistics@gmail.com</p>
                 </div>
 
                 <div className="contact-container">
@@ -56,7 +44,7 @@ export default (props) => {
         </div>
 
         
-        <form className='centered' name='contact'>
+        <form className='centered' name='contact' method="POST" data-netlify="true">
             <h2>Get in Touch</h2>
             <input placeholder="Your name" name="name"/>
             <input placeholder="Email Address" name="email"/>

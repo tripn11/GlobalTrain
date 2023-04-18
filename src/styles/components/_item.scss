@@ -1,13 +1,14 @@
 .item {
     display: grid;
     width: 80vw;
-    grid-template-columns: 17% 17% 17% 17% 32%;
+    grid-template-columns: 20% 20% 20% 40%;
     margin: 0 auto;
     border: 3px solid whitesmoke;
     border-top: transparent;
     
     p{
-        padding: 0.5rem;
+        padding: 1rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -17,10 +18,12 @@
 
 @media only screen and (max-width: 500px){
     .item {
-        width: 95vw;
+        width: 95%;
+        margin-bottom: 1rem;
         
         p {
-            font-size: 0.8rem;
+            font-size: 1rem;
+            padding: 1rem 0 1rem 0.2rem;
         }
     }
 }

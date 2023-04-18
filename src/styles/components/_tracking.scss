@@ -2,18 +2,19 @@
     > div:first-child{
         background-color: $orange;
         position: relative;
-        height: 5vh;
+        height: 4rem;
 
         *{
             position: absolute;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: white;
-            top: 0.2rem;
+            top: 0rem;
             transition: 0.5s;
             -webkit-transition: 0.5s;
             -moz-transition: 0.5s;
             -ms-transition: 0.5s;
             -o-transition: 0.5s;
+            padding-top: 1rem;
         }
 
         *:first-child{
@@ -60,22 +61,27 @@
         -moz-border-radius: 100px;
         -ms-border-radius: 100px;
         -o-border-radius: 100px;
+        font-size: 1.3rem;
+        text-align: center;
     }
 
     > div:last-child {
         h2{
             text-align: center;
+            font-size: 2rem;
+            padding-bottom: 1.5rem;
         }
 
         > div:first-of-type {
             display: grid;
             width: 80vw;
-            grid-template-columns: 17% 17% 17% 17% 32%;
+            grid-template-columns: 20% 20% 20% 40%;
             margin: 1rem auto 0;
+            font-size: 1.5rem;
 
             p{
-                background-color: $orange;
-                padding: 0.5rem;
+                background-color: darken($light-blue, 10);
+                padding: 1rem;
                 margin-right: 0.1rem;
             }
         }
@@ -86,6 +92,48 @@
             margin-top: 5rem;
             font-size: 1.5rem;
             color: $gray;
+        }
+    }
+
+    > #details {
+        width: 90%;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+        margin:0 auto 3rem;
+
+        > div {
+            background-color: lighten($orange,48);
+            margin-right: 3rem;
+
+            >*:first-child{
+                background-color: darken($orange,5);
+                color: white;
+                font-size: 1.8rem;
+                padding: 1rem 0.3rem;
+            }
+
+            >*:last-child {
+                font-size: 1.4rem;
+                >div {
+                    padding: 0.7rem 0.3rem;
+                    display: grid;
+                    grid-template-columns: 30% 70%;
+
+                    >*:first-child {
+                        font-style: bold;
+                        font-weight: 700;
+                    }
+
+                    >*:last-child {
+                        overflow-x: auto ;
+                        overflow-y: hidden;
+                    }
+                }
+            }
+        }
+
+        >div:last-child {
+            margin-right: 0;
         }
     }
 }
@@ -199,6 +247,12 @@
             *:last-child {
                 right: 1rem;
             }
+
+            p{
+                width: 20rem;
+                font-size: 1.8rem;
+                left: 55%;
+            }
         }
 
         >input {
@@ -209,11 +263,47 @@
         }
 
         > div:last-child {
+            >h2 {
+                padding: 2rem 0 0.7rem 0;
+            }
             > div:first-of-type {
                 width: 95%;
 
                 p {
                     padding: 0.3rem;
+                    font-size: 1.3rem;
+                }
+            }
+        }
+
+        >#details {
+            width: 80%;
+            margin: 1rem auto;
+            display: block;
+
+            >div {
+                margin-right: 0;
+                margin-bottom: 2rem;
+
+                >*:first-child {
+                    font-size: 1.4rem;
+                    padding: 0.4rem;
+                    text-align: center;
+                }
+
+                >*:last-child {
+                    font-size: 1.1rem;
+
+                    >div {
+
+                        >*:last-child{
+                            overflow-x: scroll;  
+                        }
+
+                        >*:last-child::-webkit-scrollbar{
+                            display: none;
+                        }
+                    }
                 }
             }
         }
