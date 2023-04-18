@@ -59,7 +59,7 @@ module.exports = (env,argv) => {
         title:"GlobalTrain",
         filename:"index.html",
         template:"src/template.html",
-        favicon:"/src/Images/favicon.png" 
+        favicon:"src/Images/favicon.png" 
       }),
       new MiniCssExtractPlugin(),
       new webpack.DefinePlugin({
